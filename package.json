@@ -6,7 +6,8 @@
     "tedious": "^15.1.0"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "comparing" : "node comparing.js"
   },
   "type": "commonjs",
   "name": "SWT",
