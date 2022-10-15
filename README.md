@@ -39,7 +39,8 @@ git clone https://github.com/xWyvernPx/SWT.git
     <span style="color:orange">Object</span>,
     <span style="color:orange">Array</span>.
 - 2 Types of Comparison :
+
   - Loose equality : <span style="color:orange">==</span>
   - Strict equality : <span style="color:orange">===</span>
 
-### a. Problem with loose
+  ### a. Problem with loose equality
