@@ -1,0 +1,32 @@
+
+name: demo Jest Framework CI
+
+on:
+  push:
+    branches: ["master"] # Mỗi khi code push lên nhánh master là thực hiện CI
+  pull_request:
+    branches: ["master"] #Mỗi khi có pull_request  vào nhánh master là thực hiện CI
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # xin server ubuntu bản mới nhất để sử dụng
+
+    strategy:
+      matrix: 
+        node-version: [16.x,18.x] # đưa ra danh sách môi trường để thực hiện các jobs trong CI mỗi phiên bản môi trường ( Node) sẽ là một nhánh thực hiện các jobs và các nhánh này thực hiện song song nhau
+
+    steps:
+    #Cài môi trường Node cho các nhánh khác nhau
+      - uses: actions/checkout@v3 
+      - name: Use Node.js ${{ matrix.node-version }} 
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }} 
+          cache: "npm"
+    # Tải các dependencies ( hay packages , library ) cho cái dự án bằng câu lệnh CLI npm install
+      - name: Install dependencies
+        run: npm install
+    # Bắt đầu Testing toàn bộ dự án bằng CLI  : npm  test
+    # Bản chất câu lệnh trên sẽ gọi  câu lệnh  jest -> jest sẽ đi kiếm toàn bộ file nào có đuôi *.test.js hoặc *.spec.js để thực hiện tất cả các test trong các file đó , nếu Passed hết => XANH ; Chỉ cần 1 test case fail -> test trên file đó Fail =>  ĐỎ
+      - name: Run test
+        run: npm test

@@ -2,7 +2,7 @@ function isPrime(number) {
   if (!Number.isInteger(number)) {
     throw Error(
       "Argument must be an integer"
-    ); /* Trường hợp người dùng nhập vào một chuỗi, một số thực không phải số nguyên */
+    ); /* Trường hợp cho vào một chuỗi, một số thực không phải số nguyên */
   }
   let result = true;
   if (number < 1) {

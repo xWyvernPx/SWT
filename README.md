@@ -8,23 +8,23 @@
   > Make sure that you have installed Node on your system <br>
   > You can install it here: [Node](https://nodejs.org/en/download/)
 
-**1. Install jest as global**
+  **1. Install jest as global**
 
-```
-npm install -g jest
-```
+  ```
+  npm install -g jest
+  ```
 
-or
+  or
 
-```
-yarn global add jest
-```
+  ```
+  yarn global add jest
+  ```
 
-**2. Clone project**
+  **2. Clone project**
 
-```git
-git clone https://github.com/xWyvernPx/SWT.git
-```
+  ```git
+  git clone https://github.com/xWyvernPx/SWT.git
+  ```
 
 ## **2. Comparing in JavaScript**
 
@@ -142,7 +142,7 @@ function isPrime(number) {
   if (!Number.isInteger(number)) {
     throw Error(
       "Argument must be an integer"
-    ); /* Trường hợp người dùng nhập vào một chuỗi, một số thực không phải số nguyên */
+    ); /* Trường hợp cho vào một chuỗi, một số thực không phải số nguyên */
   }
   let result = true;
   if (number < 1) {
@@ -180,3 +180,134 @@ const checkPrimeAndGetPosition = (number) => {
 
 module.exports = { checkPrimeAndGetPosition }; // xuất ra để có thể sử dụng chỗ khác, sử dụng trong hàm test
 ```
+Let's test itttt. <br>
+There is a file <span style="color:orange">isPrime.test.js</span>
+
+```js 
+  const { checkPrimeAndGetPosition } = require("./isPrime"); /* Lấy cái hàm ở bên kia ra để test ở đây */
+describe("Testing function checkPrimeAndGetPosition", () => { /* Describe sẽ đưa ra một cái scope để test và nó có tên, như là trong một "vùng" đó thì chỉ test một thứ thôi. Và ở trong cái callback function này là cái "vùng " đó */
+  test("Test function checkPrimeAndGetPosition with valid param", () => { /* Test thì cũng định nghĩa một "vùng" được đặt tên và chưa các test case , mỗi Test giống như một method trong class bên Java ví dụ "testcheckPrimeWithValidParameters" , "testcheckPrimeWithInvalidParameters" */
+
+    /* Đây là cách khai báo một test case trong Jest
+    Với expect() sẽ nhận một tham số là actual value (giá trị thực tế của hàm muốn test trả về) và các method để xác định expected value (giá trị mong muốn nó sẽ trả về) : toBe() cho các Primative Type , toEqual() cho các kiểu Reference Type ngoài ra còn các method khác sẽ xác định domain của expected value thay vì muốn nó bằng một giá trị  toBeGreaterThan(),toBeLessThan(), toMatch() 
+    có nhiều sự lựa chọn
+    */
+    /*  Ở đây hàm cần test trả về một Object là Reference Type nên là dùng toEqual */
+
+    expect(checkPrimeAndGetPosition(2)).toEqual({ isPrime: true, position: 1 });
+    // Có thể có nhiều test case đây
+    expect(checkPrimeAndGetPosition(3)).toEqual({ isPrime: true, position: 2 });
+    expect(checkPrimeAndGetPosition(4)).toEqual({ isPrime: false, position: -1 });
+    expect(checkPrimeAndGetPosition(5)).toEqual({ isPrime: true, position: 3 });
+    expect(checkPrimeAndGetPosition(6)).toEqual({ isPrime: false, position: -1 });
+    expect(checkPrimeAndGetPosition(7)).toEqual({ isPrime: true, position: 4 });
+  });
+
+  /* Trường hợp tham số truyền vào không phải kiểu Integer thì nó sẽ quăng ra Error
+  sử dụng toThrow() để bắt Error 
+  Lưu ý từ Jest :  cái hàm cần Test cần được bọc lại bằng một function thì mới bắt được lỗi
+  */
+  test("Test function checkPrimeAndGetPosition with valid param", () => {
+    expect(() => checkPrimeAndGetPosition("asdfgh")).toThrow();
+  });
+});
+
+```
+
+> If already install extension click on symbol  
+> If not install extension use cli ```jest isPrime.test.js```
+
+## **4. Data Driven Testing in Jest** 
+Test scripts in at  <span style="color:orange">isPrimeDDT.test.js</span>
+```js 
+  const { checkPrimeAndGetPosition } = require("./isPrime");
+/* vẫn lấy hàm hồi nãy đã xuất khẩu ra để test */
+const data = [ /* Khai báo bộ data để test bằng một mảng hai chiều như chơi bên Java gồm input vào vào expected value */
+  [2, { isPrime: true, position: 1 }],
+  [3, { isPrime: true, position: 2 }],
+  [4, { isPrime: false, position: -1 }],
+  [5, { isPrime: true, position: 3 }],
+  [6, { isPrime: false, position: -1 }],
+  [7, { isPrime: true, position: 3 }],
+];
+
+describe("Testing function checkPrimeAndFindPos with Data Driven Testing", () => {
+  /* khai báo Test với bộ data (each) và từng cặp input , expected value sẽ được nhét vào cho ta xài 
+    Chơi đồ chơi đã cài không cần nhớ cú pháp  : Jest Snippet
+  snippet : gõ teste -> tab
+
+  */
+  test.each(data)("Testing function checkPrimeAndFindPos with DDT type 1",
+    (input, expected) => {
+      expect(checkPrimeAndGetPosition(input)).toEqual(expected);
+    });
+
+  /*     Cách này lầ`y hơn không cần khai báo bộ data bằng mảng hai chiều mà   chơi viết theo format FW quy định như vầy luôn
+     Vẫn như trên nó sẽ nhét từng bộ input và expected vào cho ta xài 
+     Không cần nhớ cú pháp, sử dụng đồ chơi đã cài ( Jest Snippet ) 
+     gõ testet  -> tab 
+     */
+  test.each`
+    input | expected
+    ${2}  | ${{ isPrime: true, position: 1 }}
+    ${3}  | ${{ isPrime: true, position: 2 }}
+    ${4}  | ${{ isPrime: false, position: -1 }}
+    ${5}  | ${{ isPrime: true, position: 3 }}
+    ${6}  | ${{ isPrime: false, position: -1 }}
+    ${7}  | ${{ isPrime: true, position: 4 }}
+  `("Testing function checkPrimeAndFindPos with DDT type 2)", ({ input, expected }) => {
+    expect(checkPrimeAndGetPosition(input)).toEqual(expected);
+  });
+});
+
+```
+
+> If already install extension click on symbol  
+> If not install extension use cli ```jest isPrimeDDT.test.js```
+
+## **5. Test services with async/await**
+## **5. Test RestAPIs**
+
+## **7. CI project with GitAction**
+> <span style="color:orange">.github/workflows/project-ci.yml</span>
+
+```yml
+
+name: demo Jest Framework CI
+
+on:
+    # Mỗi khi code push lên nhánh master là thực hiện CI
+  push:
+    branches: ["master"] 
+    #Mỗi khi có pull_request  vào nhánh master là thực hiện CI
+  pull_request:
+    branches: ["master"] 
+
+jobs:
+  build:
+  # xin server ubuntu bản mới nhất để sử dụng
+    runs-on: ubuntu-latest 
+
+    strategy:
+      matrix: 
+      # đưa ra danh sách môi trường để thực hiện các jobs trong CI mỗi phiên bản môi trường ( Node) sẽ là một nhánh thực hiện các jobs và các nhánh này thực hiện song song nhau
+        node-version: [16.x,18.x] 
+
+    steps:
+    #Cài môi trường Node cho các nhánh khác nhau
+      - uses: actions/checkout@v3 
+      - name: Use Node.js ${{ matrix.node-version }} 
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }} 
+          cache: "npm"
+    # Tải các dependencies ( hay packages , library ) cho cái dự án bằng câu lệnh CLI npm install
+      - name: Install dependencies
+        run: npm install
+    # Bắt đầu Testing toàn bộ dự án bằng CLI  : npm  test
+    # Bản chất câu lệnh trên sẽ gọi  câu lệnh  jest -> jest sẽ đi kiếm toàn bộ file nào có đuôi *.test.js hoặc *.spec.js để thực hiện tất cả các test trong các file đó , nếu Passed hết => XANH ; Chỉ cần 1 test case fail -> test trên file đó Fail =>  ĐỎ
+      - name: Run test
+        run: npm test
+
+```
+

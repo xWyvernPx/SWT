@@ -7,7 +7,7 @@
   },
   "scripts": {
     "test": "jest",
-    "comparing" : "node comparing.js"
+    "comparing": "node comparing.js"
   },
   "type": "commonjs",
   "name": "SWT",
@@ -17,6 +17,9 @@
   "author": "xWyvernPx",
   "repository": "https://github.com/xWyvernPx/SWT",
   "devDependencies": {
+    "@types/node": "^18.11.0",
+    "@types/tedious": "^4.0.9",
+    "@types/validator": "^13.7.7",
     "jest": "^29.2.0"
   }
 }
