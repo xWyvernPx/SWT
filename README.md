@@ -2,7 +2,7 @@
 
 # **This project is a demo for SWT presentation about Framework Jest**
 
-## **How to start using project**
+## **1. How to start using project**
 
 - ### **Project link: https://github.com/xWyvernPx/SWT**
   > Make sure that you have installed Node on your system <br>
@@ -25,3 +25,21 @@ yarn global add jest
 ```git
 git clone https://github.com/xWyvernPx/SWT.git
 ```
+
+## **2. Comparing in JavaScript**
+
+- Data Type in JavaScript :
+  - Primary type :
+    <span style="color:orange">number</span>,
+    <span style="color:orange">String</span> ,
+    <span style="color:orange">null</span> ,
+    <span style="color:orange">undefined</span> ,
+    <span style="color:orange">boolean</span>,...
+  - Reference Type :
+    <span style="color:orange">Object</span>,
+    <span style="color:orange">Array</span>.
+- 2 Types of Comparison :
+  - Loose equality : <span style="color:orange">==</span>
+  - Strict equality : <span style="color:orange">===</span>
+
+### a. Problem with loose
