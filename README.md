@@ -23,5 +23,3 @@ yarn global add jest
 ```git
 git clone https://github.com/xWyvernPx/SWT.git
 ```
-
-
