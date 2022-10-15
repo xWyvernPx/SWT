@@ -1,3 +1,5 @@
+[![SWT Demo CI](https://github.com/xWyvernPx/SWT/actions/workflows/node.js.yml/badge.svg)](https://github.com/xWyvernPx/SWT/actions/workflows/node.js.yml)
+
 # **This project is a demo for SWT presentation about Framework Jest**
 
 ## **How to start using project**
