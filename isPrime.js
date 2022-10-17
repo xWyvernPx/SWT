@@ -39,7 +39,7 @@ const checkPrimeAndGetPosition = (number) => {
 };
 
 module.exports = { checkPrimeAndGetPosition };
-
+// De xua t cai ham ra de cho khac lay su dung duoc
 // TEST FUNCTION isPrime
 
 console.log(
@@ -49,6 +49,23 @@ console.log(
     isPrime: true,
     position: 1,
   },
-  "\n| Actual = ",
-  checkPrimeAndGetPosition(2)
+  "\n| Actual = ", checkPrimeAndGetPosition(2)
+);
+console.log(
+  "Testing Function isPrime with argument number = " + 3,
+  "\n| Expected = ",
+  {
+    isPrime: true,
+    position: 2,
+  },
+  "\n| Actual = ", checkPrimeAndGetPosition(3)
+);
+console.log(
+  "Testing Function isPrime with argument number = " + 4,
+  "\n| Expected = ",
+  {
+    isPrime: false,
+    position: -1,
+  },
+  "\n| Actual = ", checkPrimeAndGetPosition(4)
 );

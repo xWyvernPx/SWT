@@ -1,4 +1,6 @@
-const { checkPrimeAndGetPosition } = require("./isPrime"); /* Lấy cái hàm ở bên kia ra để test ở đây */
+const { checkPrimeAndGetPosition } = require("./isPrime");
+/* Lấy cái hàm ở bên kia ra để test ở đây */
+
 describe("Testing function checkPrimeAndGetPosition", () => { /* Describe sẽ đưa ra một cái scope để test và nó có tên, như là trong một "vùng" đó thì chỉ test một thứ thôi. Và ở trong cái callback function này là cái "vùng " đó */
   test("Test function checkPrimeAndGetPosition with valid param", () => { /* Test thì cũng định nghĩa một "vùng" được đặt tên và chưa các test case , mỗi Test giống như một method trong class bên Java ví dụ "testcheckPrimeWithValidParameters" , "testcheckPrimeWithInvalidParameters" */
 
@@ -21,7 +23,7 @@ describe("Testing function checkPrimeAndGetPosition", () => { /* Describe sẽ �
   sử dụng toThrow() để bắt Error 
   Lưu ý từ Jest :  cái hàm cần Test cần được bọc lại bằng một function thì mới bắt được lỗi
   */
-  test("Test function checkPrimeAndGetPosition with valid param", () => {
-    expect(() => checkPrimeAndGetPosition("asdfgh")).toThrow();
+  test("Test function checkPrimeAndGetPosition with invalid param", () => {
+    expect(function () { return checkPrimeAndGetPosition("asdfgh") }).toThrow();
   });
 });

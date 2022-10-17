@@ -1,13 +1,14 @@
 const { Sequelize, DataTypes } = require("sequelize");
 
-const sequelize = new Sequelize({
+const sequelize = new Sequelize({ // ORM 
   host: "localhost",
-  // database: "SWT",
+  database: "SWT",
   port: 1433,
   username: "sa",
   password: "WyvernP2506",
   dialect: "mssql",
 });
+
 const productModel = sequelize.define(
   "product",
   {
