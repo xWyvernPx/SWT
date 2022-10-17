@@ -4,7 +4,7 @@ function isPrime(number) {
       "Argument must be an integer"
     ); /* Trường hợp cho vào một chuỗi, một số thực không phải số nguyên */
   }
-  let result = true;
+  let result = true; // flag
   if (number < 1) {
     throw Error(
       "Argument must be larger than 1"
@@ -26,7 +26,7 @@ const findPosPrimeNum = (number) => {
   let count = 0;
   for (let index = 2; index <= number; index++) {
     if (isPrime(index)) ++count;
-  }
+  } // 
   return count;
 };
 const checkPrimeAndGetPosition = (number) => {
@@ -39,11 +39,11 @@ const checkPrimeAndGetPosition = (number) => {
 };
 
 module.exports = { checkPrimeAndGetPosition };
-// De xua t cai ham ra de cho khac lay su dung duoc
+// De xuat cai ham ra de cho khac lay su dung duoc
 // TEST FUNCTION isPrime
 
 console.log(
-  "Testing Function isPrime with argument number = " + 2,
+  "Testing Function checkPrimeAndGetPosition with argument number = " + 2,
   "\n| Expected = ",
   {
     isPrime: true,

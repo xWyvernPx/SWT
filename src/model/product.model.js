@@ -2,7 +2,7 @@ const { Sequelize, DataTypes } = require("sequelize");
 
 const sequelize = new Sequelize({ // ORM 
   host: "localhost",
-  database: "SWT",
+  database: "swt",
   port: 1433,
   username: "sa",
   password: "WyvernP2506",

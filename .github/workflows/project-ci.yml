@@ -5,9 +5,9 @@ on:
   push:
     branches: ["master"] # Mỗi khi code push lên nhánh master là thực hiện CI
   pull_request:
-    branches: ["master"] #Mỗi khi có pull_request  vào nhánh master là thực hiện CI
+    branches: ["master"] # Mỗi khi có pull_request  vào nhánh master là thực hiện CI
 
-jobs:
+jobs: # Khai bao nhung cong viec can phai lam
   build:
     runs-on: ubuntu-latest # xin server ubuntu bản mới nhất để sử dụng
 
@@ -23,7 +23,13 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }} 
           cache: "npm"
-    # Tải các dependencies ( hay packages , library ) cho cái dự án bằng câu lệnh CLI npm install
+      - name: Install a SQL Server suite of tools
+        uses: potatoqualitee/mssqlsuite@v1.5.1
+        with: 
+          install: sqlengine, sqlpackage
+          sa-password: sa@WyvernP2506
+          
+    # Tải các dependencies ( hay packages , libraries ) cho cái dự án bằng câu lệnh CLI npm install
       - name: Install dependencies
         run: npm install
     # Bắt đầu Testing toàn bộ dự án bằng CLI  : npm  test
