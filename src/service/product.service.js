@@ -1,13 +1,14 @@
 const productModel = require("../model/product.model");
 class ProductService {
+  //function kiểm tra xem sản phẩm có còn  trong kho hay không
   async checkProductStockIfAvailable(product_id) {
-    if (!Number.isInteger(product_id))
-      throw Error("Product id must be Interger");
     const product = await productModel.findOne({ where: { id: product_id } });
-    console.log(product);
+    //kiếm sản phẩm dựa trên product id truyền vào
     if (product === null) return false;
+    //nếu không có product thì product đã bị xóa => không còn trong kho
     return product.stock > 0;
+    // nếu có product và stock > 0 nghĩa là còn => true còn không => false
   }
 }
 
-module.exports = new ProductService();
+module.exports = ProductService;

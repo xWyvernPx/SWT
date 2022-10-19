@@ -1,4 +1,3 @@
-
 name: demo Jest Framework CI
 
 on:
@@ -12,27 +11,28 @@ jobs: # Khai bao nhung cong viec can phai lam
     runs-on: ubuntu-latest # xin server ubuntu bản mới nhất để sử dụng
 
     strategy:
-      matrix: 
-        node-version: [16.x,18.x] # đưa ra danh sách môi trường để thực hiện các jobs trong CI mỗi phiên bản môi trường ( Node) sẽ là một nhánh thực hiện các jobs và các nhánh này thực hiện song song nhau
+      matrix:
+        node-version: [16.x, 18.x] # đưa ra danh sách môi trường để thực hiện các jobs trong CI mỗi phiên bản môi trường ( Node) sẽ là một nhánh thực hiện các jobs và các nhánh này thực hiện song song nhau
 
     steps:
-    #Cài môi trường Node cho các nhánh khác nhau
-      - uses: actions/checkout@v3 
-      - name: Use Node.js ${{ matrix.node-version }} 
+      #Cài môi trường Node cho các nhánh khác nhau
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }} 
+          node-version: ${{ matrix.node-version }}
           cache: "npm"
+      #Vì có phần testing service kết nối với SQL nên ở đây sẽ yêu cầu cài thêm MSSQL và setup username password giống như đã setup trong dự án
       - name: Install a SQL Server suite of tools
         uses: potatoqualitee/mssqlsuite@v1.5.1
-        with: 
+        with:
           install: sqlengine, sqlpackage
           sa-password: WyvernP2506
-          
-    # Tải các dependencies ( hay packages , libraries ) cho cái dự án bằng câu lệnh CLI npm install
+
+      # Tải các dependencies ( hay packages , libraries ) cho cái dự án bằng câu lệnh CLI npm install
       - name: Install dependencies
         run: npm install
-    # Bắt đầu Testing toàn bộ dự án bằng CLI  : npm  test
-    # Bản chất câu lệnh trên sẽ gọi  câu lệnh  jest -> jest sẽ đi kiếm toàn bộ file nào có đuôi *.test.js hoặc *.spec.js để thực hiện tất cả các test trong các file đó , nếu Passed hết => XANH ; Chỉ cần 1 test case fail -> test trên file đó Fail =>  ĐỎ
+      # Bắt đầu Testing toàn bộ dự án bằng CLI  : npm  test
+      # Bản chất câu lệnh trên sẽ gọi  câu lệnh  jest -> jest sẽ đi kiếm toàn bộ file nào có đuôi *.test.js hoặc *.spec.js để thực hiện tất cả các test trong các file đó , nếu Passed hết => XANH ; Chỉ cần 1 test case fail -> test trên file đó Fail =>  ĐỎ
       - name: Run test
         run: npm test

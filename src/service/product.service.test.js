@@ -1,27 +1,31 @@
-const productService = require("./product.service");
+const ProductService = require("./product.service");
 const { Sequelize } = require("sequelize");
 const productModel = require("../model/product.model");
-jest.setTimeout(120000)
-const sequelize = new Sequelize(
-  { // ORM 
-    host: "localhost",
-    port: 1433,
-    dialect: "mssql",
-    username: "sa",
-    password: "WyvernP2506"
-  }
-)
+jest.setTimeout(120000);
+const productService = new ProductService();
+const sequelize = new Sequelize({
+  // ORM
+  host: "localhost",
+  port: 1433,
+  dialect: "mssql",
+  username: "sa",
+  password: "WyvernP2506",
+});
 
 beforeAll(async () => {
-  await sequelize.authenticate()
+  await sequelize
+    .authenticate() // Open connection
     .then(async () => {
-      await sequelize.query(`IF NOT EXISTS (
+      // Nếu kết nối thành công
+      await sequelize.query(`
+      IF NOT EXISTS (
         SELECT [name]
-            FROM sys.databases
-            WHERE [name] = N'swt'
+        FROM sys.databases
+        WHERE [name] = N'swt'
       )
       CREATE DATABASE swt`);
-      await sequelize.query("use swt");
+      await sequelize.query("USE swt");
+      // Tạo database tên swt nếu chưa có , nếu có rồi thì thôi xài luôn
       await sequelize.query(`
       IF OBJECT_ID('[dbo].[product]', 'U') IS NOT NULL
       DROP TABLE [dbo].[product]
@@ -34,48 +38,43 @@ beforeAll(async () => {
           [status] bit ,
           price float,
           CONSTRAINT PK_Product PRIMARY KEY (id)
-      );`,)
+      );`); // Tạo bảng nếu chưa có
     });
-  await productModel.create({
-    name: "Product 1",
-    desc: "Demo Product 1",
-    stock: 100,
-    status: 1,
-    price: 200000,
-  })
-  await productModel.create({
-    name: "Product 2",
-    desc: "Demo Product 2",
-    stock: 0,
-    status: 1,
-    price: 200000,
-  })
 
-  // await productModel.in
+  await Promise.all([
+    // INSERT dữ liệu mẫu để testing vào database
+    productModel.create({
+      name: "Product 1",
+      desc: "Demo Product 1",
+      stock: 100,
+      status: 1,
+      price: 200000,
+    }),
+    productModel.create({
+      name: "Product 2",
+      desc: "Demo Product 2",
+      stock: 0,
+      status: 1,
+      price: 200000,
+    }),
+  ]);
 });
 
 afterAll(async () => {
-  await sequelize.query("use master")
-  await sequelize.query("DROP DATABASE swt")
-
+  await sequelize.query("use master");
+  await sequelize.query("DROP DATABASE swt");
+  // Clear database
   sequelize.close();
+  // Close connection
 });
+
 describe("Testing Product Service", () => {
   test("Testing method checkIfProductAvailable with valid params and Product is exist", async () => {
-
-    expect(await productService.checkProductStockIfAvailable(1)).toEqual(true);
-    expect(await productService.checkProductStockIfAvailable(2)).toEqual(false);
-
+    expect(await productService.checkProductStockIfAvailable(1)).toBe(true);
+    expect(await productService.checkProductStockIfAvailable(2)).toBe(false);
   });
   test("Testing method checkIfProductAvailable with valid params and Product not exist", async () => {
     const data = await productService.checkProductStockIfAvailable(3);
     expect(data).toEqual(false);
   });
-
-
-
 });
-
-test('should first', async () => {
-  expect(1).toBe(1);
-})
