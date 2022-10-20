@@ -17,21 +17,22 @@ function isPrime(number) {
       return result;
     }
   } //Giải thuật kiểm tra một số có phải số nguyên tố hay không
-  return result;
+  return result; // co phai so nguyen to hoac khong
 }
 
 const findPosPrimeNum = (number) => {
   /*
   Hàm này để tìm vị trí của một số nguyên tố */
-  let count = 0;
+  let count = 0; //biến đếm
   for (let index = 2; index <= number; index++) {
     if (isPrime(index)) ++count;
-  } // 
-  return count;
+  } // tìm vị trí của số nguyên tố thì đếm các số nguyên tố từ 2 đến nó
+  return count; //trả về vị trí
 };
+
 const checkPrimeAndGetPosition = (number) => {
   /* Hàm này dùng để TEST , thực hiện kiểm tra một số có phải số nguyên tố không , nếu phải thì tìm vị trí  */
-  const checkResult = {
+  let checkResult = {
     isPrime: isPrime(number),
     position: isPrime(number) ? findPosPrimeNum(number) : -1,
   };
@@ -40,7 +41,7 @@ const checkPrimeAndGetPosition = (number) => {
 
 module.exports = { checkPrimeAndGetPosition };
 // De xuat cai ham ra de cho khac lay su dung duoc
-// TEST FUNCTION isPrime
+// TEST FUNCTION isPrime = console.log
 
 console.log(
   "Testing Function checkPrimeAndGetPosition with argument number = " + 2,

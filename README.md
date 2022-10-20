@@ -61,6 +61,7 @@
       expected == actual
     }`
   );
+  
   /* Result log : 
   Expected value: 3
   Actual value: 3
@@ -254,12 +255,17 @@ const data = [
   [6, { isPrime: false, position: -1 }],
   [7, { isPrime: true, position: 3 }],
 ];
-
+function each(data)(name, callback) {
+  for (var i = 0; i < data.length; i++){
+    // data[i][0] => input 
+    // data[i][1] => expected
+    callback(data[i][0], data[i][1]);
+  }
+}
 describe("Testing function checkPrimeAndFindPos with Data Driven Testing", () => {
   /* khai báo Test với bộ data (each) và từng cặp input , expected value sẽ được nhét vào cho ta xài 
     Chơi đồ chơi đã cài không cần nhớ cú pháp  : Jest Snippet
   snippet : gõ teste -> tab
-
   */
   test.each(data)(
     "Testing function checkPrimeAndFindPos with DDT type 1",
