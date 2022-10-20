@@ -9,6 +9,9 @@ class ProductService {
     return product.stock > 0;
     // nếu có product và stock > 0 nghĩa là còn => true còn không => false
   }
+  async countProduct() {
+    return await productModel.count();
+  }
 }
 
 module.exports = ProductService;

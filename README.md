@@ -1,4 +1,4 @@
-[![SWT Demo CI](https://github.com/xWyvernPx/SWT/actions/workflows/node.js.yml/badge.svg)](https://github.com/xWyvernPx/SWT/actions/workflows/node.js.yml)
+[![Demo Jest Framework CI](https://github.com/xWyvernPx/swt/actions/workflows/project-ci.yml/badge.svg)](https://github.com/xWyvernPx/swt/actions/workflows/project-ci.yml)
 
 # **This project is a demo for SWT presentation about Framework Jest**
 
@@ -31,20 +31,21 @@
 
 - Data Type in JavaScript :
   - Primary type :
-    <span style="color:orange">number</span>,
-    <span style="color:orange">String</span> ,
-    <span style="color:orange">null</span> ,
-    <span style="color:orange">undefined</span> ,
-    <span style="color:orange">boolean</span>,...
+    <span style="color:orange"><strong>number</strong></span>,
+    <span style="color:orange"><strong>boolean</strong></span>,
+    <span style="color:orange"><strong>string</strong></span> ,
+    <span style="color:orange"><strong>null</strong></span> ,
+    <span style="color:orange"><strong>undefined</strong></span> ,...
   - Reference Type :
-    <span style="color:orange">Object</span>,
-    <span style="color:orange">Array</span>.
+    <span style="color:orange"><strong>Object</strong></span>,
+    <span style="color:orange"><strong>Array</strong></span>.
+    <span style="color:orange"><strong>Function</strong></span>.
 - 2 Types of Comparison :
 
-  - Loose equality : <span style="color:orange">==</span>
-  - Strict equality : <span style="color:orange">===</span>
+  - Loose equality : <span style="color:orange"><strong>==</strong></span>
+  - Strict equality : <span style="color:orange"><strong>===</strong></span>
 
-  ### a. Problem with loose equality <span style="color:orange">==</span>
+  ### a. Problem with loose equality <span style="color:orange">**==**</span>
 
   Loose equality will only check the **value** neither the **type** <br>
   Example :

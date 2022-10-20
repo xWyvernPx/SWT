@@ -27,9 +27,9 @@ jobs: # Khai bao nhung cong viec can phai lam
         uses: potatoqualitee/mssqlsuite@v1.5.1
         with:
           install: sqlengine, sqlpackage
-          sa-password: WyvernP2506
+          sa-password: WyvernP2506 # set password cho user sa
 
-      # Tải các dependencies ( hay packages , libraries ) cho cái dự án bằng câu lệnh CLI npm install
+      # Tải các dependencies ( hay packages , libraries ) Javascript xài trong dự án cho cái dự án bằng câu lệnh CLI npm install
       - name: Install dependencies
         run: npm install
       # Bắt đầu Testing toàn bộ dự án bằng CLI  : npm  test
