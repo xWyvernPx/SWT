@@ -1,4 +1,4 @@
-const ProductService = require("../service/product.service");
+const ProductService = require("../service/product.service.js");
 
 const productController = {
   countProduct: async (req, res, next) => {
@@ -10,7 +10,6 @@ const productController = {
     } catch (error) {
       console.log(error);
     } finally {
-      delete productService;
     }
   },
 };

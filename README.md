@@ -4,7 +4,7 @@
 
 ## **1. How to start using project**
 
-- ### **Project link: https://github.com/xWyvernPx/SWT**
+- ### **Project link: https://github.com/xWyvernPx/swt**
 
   > Make sure that you have installed Node on your system <br>
   > You can install it here: [Node](https://nodejs.org/en/download/)
@@ -24,13 +24,27 @@
   **2. Clone project**
 
   ```git
-  git clone https://github.com/xWyvernPx/SWT.git
+  git clone https://github.com/xWyvernPx/swt.git
   ```
+
+  **3. Install dependencies**
+
+  ```
+  npm install
+  ```
+
+  or
+
+  ```
+  yarn install
+  ```
+
+  > That's oke right now, lest open project in VS Code and start to demo
 
 ## **2. Comparing in JavaScript**
 
 - Data Type in JavaScript :
-  - Primary type :
+  - Primary Type :
     <span style="color:orange"><strong>number</strong></span>,
     <span style="color:orange"><strong>boolean</strong></span>,
     <span style="color:orange"><strong>string</strong></span> ,
@@ -38,7 +52,7 @@
     <span style="color:orange"><strong>undefined</strong></span> ,...
   - Reference Type :
     <span style="color:orange"><strong>Object</strong></span>,
-    <span style="color:orange"><strong>Array</strong></span>.
+    <span style="color:orange"><strong>Array</strong></span>,
     <span style="color:orange"><strong>Function</strong></span>.
 - 2 Types of Comparison :
 
@@ -61,7 +75,7 @@
       expected == actual
     }`
   );
-  
+
   /* Result log : 
   Expected value: 3
   Actual value: 3
@@ -255,13 +269,7 @@ const data = [
   [6, { isPrime: false, position: -1 }],
   [7, { isPrime: true, position: 3 }],
 ];
-function each(data)(name, callback) {
-  for (var i = 0; i < data.length; i++){
-    // data[i][0] => input 
-    // data[i][1] => expected
-    callback(data[i][0], data[i][1]);
-  }
-}
+
 describe("Testing function checkPrimeAndFindPos with Data Driven Testing", () => {
   /* khai báo Test với bộ data (each) và từng cặp input , expected value sẽ được nhét vào cho ta xài 
     Chơi đồ chơi đã cài không cần nhớ cú pháp  : Jest Snippet

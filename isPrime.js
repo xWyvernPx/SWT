@@ -20,7 +20,7 @@ function isPrime(number) {
   return result; // co phai so nguyen to hoac khong
 }
 
-const findPosPrimeNum = (number) => {
+const findPosPrimeNum = function (number) {
   /*
   Hàm này để tìm vị trí của một số nguyên tố */
   let count = 0; //biến đếm
@@ -30,7 +30,7 @@ const findPosPrimeNum = (number) => {
   return count; //trả về vị trí
 };
 
-const checkPrimeAndGetPosition = (number) => {
+const checkPrimeAndGetPosition = function (number) {
   /* Hàm này dùng để TEST , thực hiện kiểm tra một số có phải số nguyên tố không , nếu phải thì tìm vị trí  */
   let checkResult = {
     isPrime: isPrime(number),
@@ -50,7 +50,8 @@ console.log(
     isPrime: true,
     position: 1,
   },
-  "\n| Actual = ", checkPrimeAndGetPosition(2)
+  "\n| Actual = ",
+  checkPrimeAndGetPosition(2)
 );
 console.log(
   "Testing Function isPrime with argument number = " + 3,
@@ -59,7 +60,8 @@ console.log(
     isPrime: true,
     position: 2,
   },
-  "\n| Actual = ", checkPrimeAndGetPosition(3)
+  "\n| Actual = ",
+  checkPrimeAndGetPosition(3)
 );
 console.log(
   "Testing Function isPrime with argument number = " + 4,
@@ -68,5 +70,6 @@ console.log(
     isPrime: false,
     position: -1,
   },
-  "\n| Actual = ", checkPrimeAndGetPosition(4)
+  "\n| Actual = ",
+  checkPrimeAndGetPosition(4)
 );

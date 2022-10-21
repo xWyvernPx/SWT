@@ -1,5 +1,5 @@
 const { Sequelize, DataTypes } = require("sequelize");
-// ORM là những thư viện hỗ trợ mapping các bảng trong database với các đối tượng của ngôn ngữ lập trình, ngoài ra còn giúp chúng ta tự sinh code SQL và thực thi thông qua những methods và configs thay vì viết câu lệnh SQL thủ công và tự cập nhật dữ liệu dươi database khi có thay đổi ở object đã mapping với database(migration).
+// ORM là những thư viện hỗ trợ mapping các bảng trong database với các đối tượng của ngôn ngữ lập trình, ngoài ra còn giúp chúng ta tự sinh code SQL và thực thi thông qua những methods và configs thay vì viết câu lệnh SQL thủ công và tự cập nhật dữ liệu dươi database khi có thay đổi ở object đã mapping với database.
 
 const sequelize = new Sequelize({
   host: "localhost",

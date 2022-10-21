@@ -74,7 +74,7 @@ describe("Testing Product Service", () => {
     expect(await productService.checkProductStockIfAvailable(2)).toBe(false);
   });
   test("Testing method checkIfProductAvailable with valid params and Product not exist", async () => {
-    const data = await productService.checkProductStockIfAvailable(3);
+    const data = await productService.checkProductStockIfAvailable(100);
     expect(data).toEqual(false);
   });
 });
