@@ -488,6 +488,10 @@ describe("Testing Product Service", () => {
 
 ## **6. Test RestAPIs**
 
+> Everyone can visit this site to get detail tutorial of testing RestAPI with Jest and supertest alongs with demos
+
+> **[Testing RestAPI with Jest and supertest](https://dev.to/franciscomendes10866/testing-express-api-with-jest-and-supertest-3gf)**
+
 ## **7. CI project with GitAction**
 
 > <span style="color:orange">.github/workflows/project-ci.yml</span>
