@@ -393,7 +393,7 @@ Now we start to testing above service. But first, there is a problem that we nee
 
 Solution :
 
-> Jest support us a concept One-Time setup with hooks **_beforeAll()_** and **_afterAll()_** <br> > **Idea** :
+> Jest support us a concept Setup & TearDown with hooks **_beforeAll()_** and **_afterAll()_** <br> > **Idea** :
 >
 > - Open connection, create database, create table, insert sample data for testing => Init database before starting to test with **beforeAll()**
 > - Drop database, close connection => Clear database after testing done with **afterAll()**
@@ -491,6 +491,50 @@ describe("Testing Product Service", () => {
 > Everyone can visit this site to get detail tutorial of testing RestAPI with Jest and supertest alongs with demos
 
 > **[Testing RestAPI with Jest and supertest](https://dev.to/franciscomendes10866/testing-express-api-with-jest-and-supertest-3gf)**
+
+## **7. Report testing result**
+
+The testing result only print on terminal log screen.
+The demand of us is have a file that saves testing result every testing process.
+
+So we will use a plugin of Jest **_jest-html-report_** by install from npm(Node Package Management)
+
+Install CLI :
+
+```
+npm install jest-html-report
+```
+
+or
+
+```
+yarn add jest-html-report
+```
+
+Because it is a plugin so we have a config file for Jest to notice it that we want to use report plugin.
+
+Create a config file at root : **jest.config.json**
+
+```json
+{
+  "reporters": [
+    "default",
+    [
+      "./node_modules/jest-html-reporter",
+      {
+        "pageTitle": "Test Report",
+        "outputPath": "./test-report.html",
+        "append": true
+      }
+    ]
+  ]
+}
+```
+
+> Try to test with Jest again and feel the result
+
+> There would be a file named : **test-report.html** <br>
+> Let open this page and you can see the report
 
 ## **7. CI project with GitAction**
 
