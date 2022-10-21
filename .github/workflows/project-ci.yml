@@ -35,4 +35,4 @@ jobs: # Khai bao nhung cong viec can phai lam
       # Bắt đầu Testing toàn bộ dự án bằng CLI  : npm  test
       # Bản chất câu lệnh trên sẽ gọi  câu lệnh  jest -> jest sẽ đi kiếm toàn bộ file nào có đuôi *.test.js hoặc *.spec.js để thực hiện tất cả các test trong các file đó , nếu Passed hết => XANH ; Chỉ cần 1 test case fail -> test trên file đó Fail =>  ĐỎ
       - name: Run test
-        run: jest
+        run: npm test
