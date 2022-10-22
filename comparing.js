@@ -1,7 +1,7 @@
 //    ==  -  Loose equality operator
 
 // CASE 1
-/* let expected = 3;
+let expected = 3;
 let actual = "3";
 
 console.log(
@@ -11,7 +11,7 @@ console.log(
   actual,
   "\nCompare value:",
   expected == actual
-); */
+);
 
 // CASE 2
 /* let expected = true;
@@ -23,14 +23,14 @@ console.log(
   "\nActual value:",
   actual,
   "\nCompare value:",
-  expected == actual
+  expected === actual
 ); */
 
 // === - Strict equality operator
 
 // CASE 1
-/* 
-let expected = {
+
+/* let expected = {
   name: "A",
   age: 20,
 };
@@ -46,8 +46,8 @@ console.log(
   actual,
   "\nCompare value:",
   expected === actual
-); */
-
+);
+ */
 //CASE 2
 /* let expected = [1, 2, 3];
 let actual = [1, 2, 3];

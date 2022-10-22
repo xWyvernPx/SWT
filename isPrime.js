@@ -44,6 +44,7 @@ module.exports = { checkPrimeAndGetPosition };
 // TEST FUNCTION isPrime = console.log
 
 console.log(
+  // giong system.out.println()
   "Testing Function checkPrimeAndGetPosition with argument number = " + 2,
   "\n| Expected = ",
   {

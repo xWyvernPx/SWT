@@ -88,7 +88,7 @@
   const expected = true;
   const actual = "1";
 
-  log(
+  console.log(
     `Expected value: ${expected}\nActual value: ${actual}\nCompare value: ${
       expected == actual
     }`
@@ -100,7 +100,7 @@
   */
   ```
 
-  ### b. Problem with loose equality <span style="color:orange">**===**</span>
+  ### b. Problem with strict equality <span style="color:orange">**===**</span>
 
   > With **Reference Type** this comparison will only compare the address
 
@@ -536,7 +536,7 @@ Create a config file at root : **jest.config.json**
 > There would be a file named : **test-report.html** <br>
 > Let open this page and you can see the report
 
-## **7. CI project with GitAction**
+## **8. CI project with GitAction**
 
 > <span style="color:orange">.github/workflows/project-ci.yml</span>
 
